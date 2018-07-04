@@ -10,7 +10,7 @@ class Db{
     public static function getConnection(){
         $paramPath = ROOT . '/config/db_params.php';
 
-        $params = include_once($paramPath);
+        $params = include($paramPath);
         //var_dump($params);
 
         $dsn = "mysql:host={$params['host']};dbname={$params['dbname']}";
@@ -22,3 +22,4 @@ class Db{
     }
 
 }
+

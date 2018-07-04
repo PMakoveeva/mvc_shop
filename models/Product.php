@@ -13,16 +13,12 @@ class Product{
     public static function getLatestProducts($count = self::SHOW_BY_DEFAULT){
 
         $count = intval($count);
-
         $db = Db::getConnection();
-
         $productList = array();
 
-        $result = $db->query('SELECT id, `name`, price, image, is_new FROM product WHERE status = "1" ORDER BY id DESC LIMIT' .$count);;
+        $result = $db->query('SELECT id, name, price, image, is_new FROM product WHERE status = "1" ORDER BY id DESC LIMIT ' . $count);
 
         $i = 0;
-        //var_dump('SELECT id, `name`, price, image, is_new FROM product WHERE status = "1" ORDER BY id DESC LIMIT 3');
-        //exit();
         while ($row = $result->fetch()) {
             $productList[$i]['id'] = $row['id'];
             $productList[$i]['name'] = $row['name'];

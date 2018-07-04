@@ -5,8 +5,8 @@
  * Date: 30.06.2018
  * Time: 2:10
  */
-include_once  (ROOT . '/models/Category.php');
-include_once  (ROOT . '/models/Product.php');
+include_once  ROOT . '/models/Category.php';
+include_once  ROOT . '/models/Product.php';
 
 class SiteController{
 
@@ -15,8 +15,8 @@ class SiteController{
         $categories = array();
         $categories = Category::getCategoriesList();
 
-       $products = array();
-       $products = Product::getLatestProducts(3);
+        $latestProducts = array();
+        $latestProducts = Product::getLatestProducts(3);
 
         require_once(ROOT . '/views/site/index.php');
 
