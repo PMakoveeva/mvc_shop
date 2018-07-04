@@ -58,7 +58,7 @@ class Router
 //                exit();
                 if(file_exists($controllerFile)){
                     //echo 'Hello';
-                    include_once ($controllerFile);
+                    include ($controllerFile);
                 }
 
                 $controllerObject = new $controllerName;
