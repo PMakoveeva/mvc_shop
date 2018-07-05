@@ -57,4 +57,19 @@ class Product{
         }
 
     }
+
+    public static function getProductById($productId = false){
+
+        if($productId){
+
+            $db = Db::getConnection();
+
+            $result = $db->query('SELECT * FROM product WHERE id ='. $productId);
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+
+            return $result->fetch();
+
+        }
+
+    }
 }
