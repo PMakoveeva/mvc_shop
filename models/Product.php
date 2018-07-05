@@ -39,7 +39,10 @@ class Product{
             $db = Db::getConnection();
             $productList = array();
 
-            $result = $db->query('SELECT `id`, `name`, `price`, `image`, `is_new` FROM `product` WHERE `status` = "1" and `category_id` =' . $categoryId . 'ORDER BY `id` DESC');
+            $result = $db->query("SELECT id, name, price, image, is_new FROM product "
+                . "WHERE status = '1' AND category_id = '$categoryId' "
+                . "ORDER BY id DESC "
+                . "LIMIT ".self::SHOW_BY_DEFAULT);
             $i = 0;
             while ($row = $result->fetch()) {
                 $productList[$i]['id'] = $row['id'];

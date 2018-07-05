@@ -46,9 +46,12 @@ class Router
                 $controllerName = array_shift($segments). 'Controller';
 
                 $controllerName = ucfirst($controllerName);
-                //echo $controllerName;
+
+
+
                 $actionName = 'action' . ucfirst(array_shift($segments));
                 //echo $actionName;
+
                 $parameters = $segments;
                 //var_dump($parameters);
                 $controllerFile = ROOT . '/controllers/' .
@@ -56,10 +59,10 @@ class Router
 
 //                echo $controllerFile;
 //                exit();
-                if(file_exists($controllerFile)){
-                    //echo 'Hello';
-                    include ($controllerFile);
+                if (file_exists($controllerFile)) {
+                    include_once($controllerFile);
                 }
+
 
                 $controllerObject = new $controllerName;
 //                print_r ($controllerObject);
