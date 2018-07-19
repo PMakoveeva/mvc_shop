@@ -8,7 +8,7 @@
 
 class Product{
 
-    const SHOW_BY_DEFAULT = 10;
+    const SHOW_BY_DEFAULT = 1;
 
     public static function getLatestProducts($count = self::SHOW_BY_DEFAULT){
 
@@ -32,17 +32,18 @@ class Product{
 
     }
 
-    public static function getProductsListByCategory($categoryId = false){
-
-        if($categoryId) {
+    public static function getProductsListByCategory($categoryId = false, $page = 1){
+        $page = intval($page);
+        if($categoryId && $page) {
 
             $db = Db::getConnection();
             $productList = array();
-
+            $offset = ($page-1) * self::SHOW_BY_DEFAULT;
             $result = $db->query("SELECT id, name, price, image, is_new FROM product "
                 . "WHERE status = '1' AND category_id = '$categoryId' "
                 . "ORDER BY id DESC "
-                . "LIMIT ".self::SHOW_BY_DEFAULT);
+                . " LIMIT ".self::SHOW_BY_DEFAULT
+                . " OFFSET " . $offset );
             $i = 0;
             while ($row = $result->fetch()) {
                 $productList[$i]['id'] = $row['id'];
@@ -70,6 +71,18 @@ class Product{
             return $result->fetch();
 
         }
+
+    }
+    public static function getTotalProductsInCategory($categoryId){
+        $db = Db::getConnection();
+
+        $result = $db->query('SELECT count(id) AS count FROM product '
+            . 'WHERE status="1" AND category_id ="'.$categoryId.'"');
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $result->fetch();
+
+        return $row['count'];
+
 
     }
 }
