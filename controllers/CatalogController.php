@@ -5,9 +5,9 @@
  * Date: 04.07.2018
  * Time: 16:14
  */
-include_once ROOT. '/components/Pagination.php';
-include_once  ROOT . '/models/Category.php';
-include_once  ROOT . '/models/Product.php';
+//include_once ROOT. '/components/Pagination.php';
+//include_once  ROOT . '/models/Category.php';
+//include_once  ROOT . '/models/Product.php';
 
 class CatalogController{
 
