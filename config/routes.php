@@ -16,6 +16,12 @@ return [
     'category/([0-9]+)' => 'catalog/category/$1',
 
     'user/register' => 'user/register',  //actionRegister in UserController
+    'user/login' => 'user/login',
+    'user/logout' => 'user/logout',
+
+    'cabinet/edit' => 'cabinet/edit',
+    'cabinet' => 'cabinet/index', //actionIndex in CabinetController
+
 
     '' => 'site/index', //actionIndex в SiteController
 
