@@ -19,4 +19,25 @@ class CartController{
         echo Cart::addProduct($id);
         return true;
     }
+
+    public static function actionIndex(){
+
+        $categories = [];
+        $categories = Category::getCategoriesList();
+
+        $productsInCart = false;
+
+        $productsInCart = Cart::getProducts();
+
+        if($productsInCart){
+            $productsIds = array_keys($productsInCart);
+            $products = Product::getProductsByIds($productsIds);
+
+            $totalPrice = Cart::getTotalPrice($products);
+        }
+
+        require_once (ROOT . '/views/cart/index.php');
+        return true;
+
+    }
 }
