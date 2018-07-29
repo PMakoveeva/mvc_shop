@@ -6,6 +6,7 @@
  * Time: 16:39
  */
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once (ROOT . '/views/layouts/header.php')?>
@@ -43,9 +44,9 @@
                                         <img src="/template/images/home/product1.jpg" alt="" />
                                         <h2><?php echo $product['price']?>$</h2>
                                         <a href="/product/<?php echo $product['id']?>">
-                                            <p><?php echo $product['id']?><br><?php echo $product['name']?></p>
+                                            <p><?php echo $product['name']?></p>
                                         </a>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $product['id']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                     </div>
                                     <?php if($product['is_new']):?>
                                         <img src="/template/images/home/new.png" class="new" alt="" >
