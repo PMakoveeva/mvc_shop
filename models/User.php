@@ -26,6 +26,13 @@ class User{
         return false;
     }
 
+    public static function checkPhone($phone){
+        if (strlen($phone) > 11) {
+            return true;
+        }
+        return false;
+    }
+
     public static function checkPassword($password) {
         if (strlen($password) >= 6) {
             return true;
